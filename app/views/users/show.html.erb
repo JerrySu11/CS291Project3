@@ -1,0 +1,22 @@
+<h1>User Name: <%= @user.name %></h1>
+
+<p>Bio: <%= @user.bio %></p>
+
+<h2>Your Posts</h2>
+<ul>
+  <% @user.posts.each do |post| %>
+    <li>
+    <%= link_to post.title, post %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Other Actions</h2>
+<ul>
+  <li><%= link_to "Edit User", edit_user_path(@user) %></li>
+  <li><%= link_to "Delete User", user_path(@user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure? All corresponding posts will be deleted."
+                  } %></li>
+  <li><%= link_to "All Users", users_path %></li>
+</ul>

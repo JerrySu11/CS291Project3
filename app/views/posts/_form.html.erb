@@ -1,0 +1,32 @@
+<%= form_with model: post do |form| %>
+
+  <div>
+    <%= form.label :user_id %><br>
+    <%= form.text_field :user_id %>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% post.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %><br>
+    <% post.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
