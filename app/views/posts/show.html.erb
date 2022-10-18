@@ -1,14 +1,20 @@
-<h1>Post title: <%= @post.title %></h1>
+<h2>Post title: <%= @post.title %></h2>
 <h4>Author: <%= @post.user.name %></h4>
 <p>Content: <%= @post.body %></p>
 
 
 
-<ul>
-  <li><%= link_to "Edit", edit_post_path(@post) %></li>
-  <li><%= link_to "Delete", post_path(@post), data: {
+<p>
+  <%= link_to "Update", edit_post_path(@post) %> |
+  <%= link_to "Delete", post_path(@post), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>
-  <li><%= link_to "All Posts", posts_path %></li>
-</ul>
+                  } %> |
+  <%= link_to "All Posts", posts_path %>
+</p>
+
+<h3>Comments</h3>
+<%= render @post.comments %>
+
+<h3>Add a comment:</h3>
+<%= render 'comments/form' %>
