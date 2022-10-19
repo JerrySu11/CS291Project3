@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
       flash.alert = "User not found."
       redirect_to post_path(@post) and return
     end
+<<<<<<< HEAD
+=======
+
+>>>>>>> 22fd3efd89e3b2caf0b13a70cff20fe7d8171db6
     @comment = @post.comments.create(comment_params)
     redirect_to post_path(@post)
   end
