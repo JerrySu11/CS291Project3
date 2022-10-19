@@ -3,6 +3,11 @@
     <%= form.label :commenter %><br>
     <%= form.text_field :commenter %>
   </p>
+  <% flash.each do |type, msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
   <p>
     <%= form.label :body %><br>
     <%= form.text_area :body %>

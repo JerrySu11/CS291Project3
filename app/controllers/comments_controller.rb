@@ -1,6 +1,13 @@
 class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
+    begin
+      user = User.find(comment_params[:commenter].to_i)
+    rescue
+      flash.alert = "User not found."
+      redirect_to post_path(@post) and return
+    end
+
     @comment = @post.comments.create(comment_params)
     redirect_to post_path(@post)
   end
